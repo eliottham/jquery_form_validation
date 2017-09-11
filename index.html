@@ -1,0 +1,74 @@
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="jquery-validation-1.17.0/dist/jquery.validate.js"></script>
+</script>
+
+<body>
+	<form id="signupForm" action="">
+		<fieldset>
+			<legend>Sign up.</legend>
+			
+			<label for="email">Your Email</label><br>
+			<input id="email" name="email" type="email"><br>
+			
+			<label for="confirm_email">Confirm Email</label><br>
+			<input id="confirm_email" name="confirm_email" type="email"><br>
+			
+			<label for="password">Password</label><br>
+			<input id="password" name="password" type="password"><br>
+			
+			<label for="confirm_password">Confirm Password</label><br>
+			<input id="confirm_password" name="confirm_password" type="password"><br>
+
+			<input type="submit" value="Sign up">
+		</fieldset>
+	</form>
+
+	<script>
+		$().ready(function() {
+			$('#signupForm').validate({
+				rules: {
+					email: {
+						required: true,
+						email: true
+					},
+					confirm_email: {
+						required: true,
+						email: true,
+						equalTo: "#email"
+					},
+					password: {
+						required: true,
+						minlength: 5,
+					},
+					confirm_password: {
+						required: true,
+						minlength: 5,
+						equalTo: "#password"
+					}
+				},
+				messages: {
+					email: {
+						required: "Please provide an email.",
+						email: "Please enter a valid email."
+					},
+					confirm_email: {
+						required: "Please provide an email.",
+						email: "Please enter a valid email.",
+						equalTo: "Email confirmation does not match."
+					},
+					password: {
+						required: "Please provide a password.",
+						minlength: "Your password must be at least 5 characters long."
+					},
+					confirm_password: {
+						required: "Please provide a password.",
+						minlength: "Your password must be at least 5 characters long.",
+						equalTo: "Password confirmation does not match."
+					}
+				}
+			});
+		});
+	</script>
+</body>
+
